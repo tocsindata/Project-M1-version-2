@@ -31,3 +31,9 @@ if ($settings->navigation_type == 0 ){
 
   $menu->display();
 }
+
+ if($user_in == 1) {
+// second level nav menu starts here id is 3
+  $menu = new Menu(3);
+  $menu->display();
+ }

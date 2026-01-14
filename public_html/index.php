@@ -19,6 +19,7 @@ require_once $abs_us_root . $us_url_root . 'users/includes/template/prep.php';
 // we now include a direct require once for all function files instead of auto include via init (speed related reason)
 require_once 'usersc/includes/custom_functions.php';
 require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-dashboard-functions.php';
+require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-display-functions.php';
 	// is there a user logged in?
 	if (isset($user) && $user->isLoggedIn()) {
 		$user_in = 1 ;

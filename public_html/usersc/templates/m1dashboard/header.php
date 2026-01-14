@@ -65,9 +65,3 @@ echo '<meta name="m1-csrf" content="' . Token::generate() . '">' . PHP_EOL;
 </head>
 <body class="d-flex flex-column min-vh-100">
 <?php require_once($abs_us_root.$us_url_root.'users/includes/template/header3_must_include.php'); ?>
-<?php 
-// second level nav menu starts here id is 3
-  $menu = new Menu(3);
-  $menu->display();
-
-?>
