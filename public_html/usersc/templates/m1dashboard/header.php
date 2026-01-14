@@ -27,6 +27,40 @@ if(file_exists($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template
   <link href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>.css" rel="stylesheet">
 <?php } ?>
 
+<?php
+	if (isset($user) && $user->isLoggedIn()) {
+		$this_user_id = $user->data()->id ;
+	} else {
+		$this_user_id = 0 ;
+	}
+
+$css_files = [];
+
+/* Project CSS ALWAYS LAST */
+$css_files[99999] = '/assets/css/style.css?v=' . date("YmdH"); // public_html/assets/css/style.css
+/* nav css related */
+$css_files[100000] = '/assets/css/nav.css?v=' . date("YmdH"); // public_html/assets/css/nav.css
+
+/* widget css related */
+$css_files[100000] = '/assets/css/widgets.css?v=' . date("YmdH"); // public_html/assets/css/widgets.css
+
+
+foreach ($css_files as $css) {
+    echo '<link rel="stylesheet" href="' . $css . '">' . PHP_EOL;
+}
+
+$js_files = [];
+
+/* Nav / modal / clocks */
+$js_files[] = '/assets/js/dashboard-nav.js?v=' . date("YmdH");
+$js_files[] = '/assets/js/widgets.js?v=' . date("YmdH");
+
+foreach ($js_files as $js) {
+    echo '<script src="' . $js . '" defer></script>' . PHP_EOL;
+}
+echo '<meta name="m1-csrf" content="' . Token::generate() . '">' . PHP_EOL;
+
+?>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <?php require_once($abs_us_root.$us_url_root.'users/includes/template/header3_must_include.php'); ?>

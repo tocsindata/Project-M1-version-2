@@ -15,10 +15,10 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 require_once 'users/init.php';
-
+require_once $abs_us_root . $us_url_root . 'users/includes/template/prep.php';
 // we now include a direct require once for all function files instead of auto include via init (speed related reason)
 require_once 'usersc/includes/custom_functions.php';
-
+require_once $abs_us_home . 'usersc/includes/m1-dashboard-functions.php';
 	// is there a user logged in?
 	if (isset($user) && $user->isLoggedIn()) {
 		$user_in = 1 ;
@@ -27,4 +27,13 @@ require_once 'usersc/includes/custom_functions.php';
 		$user_in = 0 ;
 		$this_user_id = 0 ;
 	}
-
+ 
+    if($user_in == 1) {
+    // CORE BODY STARTS HERE
+    display_dashboard($this_user_id) ;
+    // CORE BODY ENDs HERE
+    } else {
+    require_once $abs_us_root . $us_url_root . 'users/views/_public_index.php';
+    }
+require_once $abs_us_root . $us_url_root . 'users/includes/html_footer.php'; 
+?>
