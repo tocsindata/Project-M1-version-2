@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+  <name>M1Dashboard</name>
+  <author>Dan Hoover</author>
+<!-- Feel free to include your github repo here -->
+  <website>https://tocsindata.com</website>
+
+<!-- the version of the template iteself -->
+  <version>1.0.0</version>
+
+<!-- release date of THIS version -->
+  <release>Jan. 14 2025</release>
+
+<!-- the last version of UserSpice you tested the template with -->
+  <tested>5.9.x</tested>
+
+<!-- The next options get a 0 for NO and a 1 for YES -->
+<!-- Database Navigation Included -->
+  <ultramenu>1</ultramenu>
+
+<!-- Classic Navigation Included -->
+  <dbnav>0</dbnav>
+
+<!-- Compatible with Dropdowns-->
+  <dropnav>1</dropnav>
+
+<!-- Manual/File-based navigation included -->
+  <filenav>1</filenav>
+
+  <!-- This is deprecated. Just leave it alone -->
+  <navstyle>Default</navstyle>
+
+<!-- Boostrap 3? Bootstrap 4? HTML5?-->
+  <library>Boostrap 5</library>
+
+  <!-- Whether the theme meets accessibility guidelines, and if so, which one(s) 
+  Label for this field: "Meets accessibility guidelines:"
+  Options include:
+    - WCAG 2.0 Level A
+    - WCAG 2.1 Level A
+    - WCAG 2.0 Level AA
+    - WCAG 2.1 Level AA
+    - WCAG 2.0 Level AAA
+    - WCAG 2.1 Level AAA
+    - Section 508/Section 255
+    - None
+  -->
+  <accessibility>WCAG 2.0 Level A</accessibility>
+
+<navopts>Default</navopts>
+</template>

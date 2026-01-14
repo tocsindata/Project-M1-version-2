@@ -16,7 +16,7 @@ error_reporting(E_ALL);
 
 require_once 'users/init.php';
 
-// we now include a direct require once for all function files instead of auto include via init
+// we now include a direct require once for all function files instead of auto include via init (speed related reason)
 require_once 'usersc/includes/custom_functions.php';
 
 	// is there a user logged in?
@@ -28,4 +28,3 @@ require_once 'usersc/includes/custom_functions.php';
 		$this_user_id = 0 ;
 	}
 
-    
