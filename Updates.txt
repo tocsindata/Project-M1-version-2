@@ -1,0 +1,17 @@
+-- must use gim rds aurora
+-- db custommaps_m1_2
+
+-- us v5.9.5 with stable only
+-- confirm php version  8.4.16 (at least)
+
+-- switch to maintenance
+-- add custom maintenance
+-- hit update track
+-- chmod /home/m1dashboard/public_html/usersc/scripts/langFiles.json
+
+-- fix (755) Warning. Your plugins.ini.php file is not writeable. This will cause problems installing plugins.
+-- fix (666) It appears that you cannot write to the users/parsers folder. If you cannot download plugins, this is why.
+
+-- install the following plugins:
+    -- HTML Purifier
+    -- 
