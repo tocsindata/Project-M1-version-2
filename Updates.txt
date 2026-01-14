@@ -12,6 +12,7 @@
 -- fix (755) Warning. Your plugins.ini.php file is not writeable. This will cause problems installing plugins.
 -- fix (666) It appears that you cannot write to the users/parsers folder. If you cannot download plugins, this is why.
 
--- install the following plugins:
-    -- HTML Purifier
-    -- 
+-- install the plugins...
+    -- all needed but dont forgoet the api builder one first
+
+    -- $abs_us_home in init needed (+ backup version)

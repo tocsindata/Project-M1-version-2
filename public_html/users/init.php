@@ -75,5 +75,6 @@ if($user->isLoggedIn()){
 }
 
 require_once $abs_us_root.$us_url_root."users/includes/loader.php";
-$timezone_string = 'America/New_York';
+$timezone_string = 'UTC';
 date_default_timezone_set($timezone_string);
+$abs_us_home = "/home/m1dashboard/"; // /home/<useraccount>/ <<< trailing backslash
