@@ -1,0 +1,127 @@
+/* Project: Project M1 Dashboard
+ * Framework: UserSpice 6
+ * File: public_html/assets/css/nav.css
+ * Date: 2026-01-15
+ * Copyright: (c) TransitSecurityReport.com / TocsinData.com
+ */
+
+/* ==========================================================
+   BOTH USERSPICE NAV MENUS
+   - menu_id = 1 (top account nav)
+   - menu_id = 3 (dashboard nav)
+   ========================================================== */
+
+/* Base bar */
+nav ul.us_menu[data-menu_id="1"],
+nav ul.us_menu[data-menu_id="3"] {
+  background-color: #000000;
+  height: 22px;
+  max-height: 22px;
+  margin: 0;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  border: 0;
+}
+
+/* Remove spacer elements that inflate height */
+nav ul.us_menu[data-menu_id="1"] .flex-grow-1,
+nav ul.us_menu[data-menu_id="1"] .us_menu_mobile_wrapper,
+nav ul.us_menu[data-menu_id="3"] .flex-grow-1,
+nav ul.us_menu[data-menu_id="3"] .us_menu_mobile_wrapper {
+  display: none !important;
+}
+
+/* Keep branding visible but constrained */
+nav ul.us_menu[data-menu_id="1"] .us_brand,
+nav ul.us_menu[data-menu_id="3"] .us_brand {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo image sizing */
+nav ul.us_menu[data-menu_id="1"] .us_brand img,
+nav ul.us_menu[data-menu_id="3"] .us_brand img {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+/* Menu items */
+nav ul.us_menu[data-menu_id="1"] > li,
+nav ul.us_menu[data-menu_id="3"] > li {
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Menu links */
+nav ul.us_menu[data-menu_id="1"] > li > a,
+nav ul.us_menu[data-menu_id="3"] > li > a {
+  height: 22px;
+  line-height: 22px;
+  padding: 0 6px;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  background: transparent;
+  border: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Icons inside links */
+nav ul.us_menu[data-menu_id="1"] > li > a i,
+nav ul.us_menu[data-menu_id="3"] > li > a i {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+/* Active + hover */
+nav ul.us_menu[data-menu_id="1"] > li.active > a,
+nav ul.us_menu[data-menu_id="1"] > li > a:hover,
+nav ul.us_menu[data-menu_id="3"] > li.active > a,
+nav ul.us_menu[data-menu_id="3"] > li > a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Dropdown caret alignment (Bootstrap 3) */
+nav ul.us_menu[data-menu_id="1"] .caret,
+nav ul.us_menu[data-menu_id="3"] .caret {
+  margin-left: 4px;
+}
+
+/* Prevent dropdown menus from forcing bar height */
+nav ul.us_menu[data-menu_id="1"] .dropdown-menu,
+nav ul.us_menu[data-menu_id="3"] .dropdown-menu {
+  margin-top: 0;
+}
+
+/* Remove Bootstrap button styling from second nav (menu_id 3 only) */
+nav ul.us_menu[data-menu_id="3"] > li > a.btn {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 6px !important;
+}
+
+/* Force-disable any Bootstrap/UserSpice "button" styling in second nav (menu_id 3) */
+nav ul.us_menu[data-menu_id="3"] > li > a,
+nav ul.us_menu[data-menu_id="3"] > li.active > a,
+nav ul.us_menu[data-menu_id="3"] > li.active-style > a,
+nav ul.us_menu[data-menu_id="3"] > li > a:focus,
+nav ul.us_menu[data-menu_id="3"] > li > a:active,
+nav ul.us_menu[data-menu_id="3"] > li > a:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}

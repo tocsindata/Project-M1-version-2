@@ -32,6 +32,15 @@ if ($settings->navigation_type == 0 ){
   $menu->display();
 }
 
+	// is there a user logged in?
+	if (isset($user) && $user->isLoggedIn()) {
+		$user_in = 1 ;
+		$this_user_id = get_user_id() ; // get_user_id() so that api key can be used as well
+	} else {
+		$user_in = 0 ;
+		$this_user_id = 0 ;
+	}
+
  if($user_in == 1) {
 // second level nav menu starts here id is 3
   $menu = new Menu(3);

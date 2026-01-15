@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Project M1 Dashboard – style.css
+   Framework: UserSpice 6
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Global hard viewport lock
+   -------------------------------------------------------------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden; /* hard stop: no page scroll */
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --------------------------------------------------------------------------
+   Main content wrapper (between navs and footer)
+   NOTE: This must match your rendered HTML: <div class="container-flex">
+   -------------------------------------------------------------------------- */
+.container-flex {
+  flex: 1 1 auto;
+  min-height: 0;        /* REQUIRED for nested flex */
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   Footer (true bottom-center, viewport-anchored)
+   -------------------------------------------------------------------------- */
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  height: 22px;
+  line-height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  z-index: 10;
+  pointer-events: none; /* footer never interferes with UI */
+}
+
+.footer img {
+  height: 16px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Dashboard Area (fills remaining vertical space)
+   ========================================================================== */
+.dashboardc {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+
+  background: #000;           /* black background for gutters */
+  padding: 0.4vw;             /* outer black frame */
+  padding-bottom: calc(0.4vw + 22px); /* reserve space for fixed footer */
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vw;                 /* black between rows */
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard rows (3 equal height rows)
+   -------------------------------------------------------------------------- */
+.dashboardc .m1-row {
+  flex: 1 1 0;
+  min-height: 0;
+
+  margin: 0;                  /* override bootstrap row margins */
+  display: flex;
+}
+
+/* Bootstrap 3 clearfix support */
+.dashboardc .m1-row::before,
+.dashboardc .m1-row::after {
+  content: " ";
+  display: table;
+}
+.dashboardc .m1-row::after {
+  clear: both;
+}
+
+/* --------------------------------------------------------------------------
+   Columns = black gutters between widgets
+   -------------------------------------------------------------------------- */
+.dashboardc .m1-row > [class*="col-"] {
+  height: 100%;
+  padding-left: 0.4vw;
+  padding-right: 0.4vw;
+}
+
+/* ==========================================================================
+   Widget container
+   ========================================================================== */
+.dborder {
+  height: 100%;
+  box-sizing: border-box;
+
+  background: rgba(255,255,255,0.05);
+  border: 0.12vw solid rgba(255,255,255,0.18);
+  border-radius: 0.9vw;
+
+  padding: 0.6vw;
+  overflow: hidden;
+}
+
+/* Remove Bootstrap panel geometry conflicts */
+.dborder .panel {
+  height: 100%;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.dborder .panel-body {
+  padding: 0;
+  color: #ffffff;
+}
+
+
+
+/* ==========================================================================
+   Project M1 – ADDITIVE layout options (DO NOT MODIFY BASELINE 3x4)
+   ========================================================================== */
+
+/*
+  Grid model:
+  - 8 columns across (so “half a normal 4-col cell” is possible)
+  - 6 rows tall (so “half-height” and “2-row tall” are possible)
+  Mapping (recommended):
+    - Normal cell (1/4 width) = span 2 cols (of 8)
+    - Half-width cell = span 1 col (of 8)
+    - Double-width cell = span 4 cols (of 8)
+    - Full-width row = span 8 cols (of 8)
+
+    - Normal height (1/3 dashboard) = span 2 rows (of 6)
+    - Half-height = span 1 row (of 6)
+    - Double-height (2 rows tall) = span 4 rows (of 6)  [i.e., 2 * normal]
+*/
+
+/* New dashboard mode: CSS grid, same look/feel as baseline gutters */
+.dashboardc.dashboardc-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.4vw;                 /* black between widgets */
+  padding: 0.4vw;             /* outer black frame */
+  padding-bottom: calc(0.4vw + 22px); /* respect fixed footer */
+  background: #000;
+}
+
+/* Grid widget wrapper (reuse your dborder look, but scoped for grid mode) */
+.dashboardc.dashboardc-grid .m1g {
+  height: 100%;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.05);
+  border: 0.12vw solid rgba(255,255,255,0.18);
+  border-radius: 0.9vw;
+  padding: 0.6vw;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Optional: keep panels from fighting the box, if you still use panels inside */
+.dashboardc.dashboardc-grid .m1g .panel {
+  height: 100%;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.dashboardc.dashboardc-grid .m1g .panel-body {
+  padding: 0;
+  color: #fff;
+}
+
+/* ---- Width spans (8-col grid) ---- */
+.m1g-w-1 { grid-column: span 1; }  /* half-width (1/8) */
+.m1g-w-2 { grid-column: span 2; }  /* normal (1/4) */
+.m1g-w-3 { grid-column: span 3; }
+.m1g-w-4 { grid-column: span 4; }  /* double-width (1/2) */
+.m1g-w-5 { grid-column: span 5; }
+.m1g-w-6 { grid-column: span 6; }
+.m1g-w-7 { grid-column: span 7; }
+.m1g-w-8 { grid-column: span 8; }  /* full width */
+
+/* ---- Height spans (6-row grid) ---- */
+.m1g-h-1 { grid-row: span 1; }     /* half-height */
+.m1g-h-2 { grid-row: span 2; }     /* normal (1/3 dashboard) */
+.m1g-h-3 { grid-row: span 3; }
+.m1g-h-4 { grid-row: span 4; }     /* double-height (2 normal rows) */
+.m1g-h-5 { grid-row: span 5; }
+.m1g-h-6 { grid-row: span 6; }     /* full height */
+
+/* Optional: force placement (use sparingly; default auto-flow is fine) */
+.m1g-r1 { grid-row-start: 1; }
+.m1g-r3 { grid-row-start: 3; }
+.m1g-r5 { grid-row-start: 5; }
+
+.m1g-c1 { grid-column-start: 1; }
+.m1g-c3 { grid-column-start: 3; }
+.m1g-c5 { grid-column-start: 5; }
+.m1g-c7 { grid-column-start: 7; }
+
+
+/* ==========================================================================
+   Project M1 – Named LARGE widget presets (additive only)
+   ========================================================================== */
+
+/* 4x4 dashboard cells (map-grade) */
+.m1g-4x4 {
+  grid-column: span 4; /* half width */
+  grid-row: span 4;    /* two rows tall */
+}
+
+/* 4x6 (tall map / timeline) */
+.m1g-4x6 {
+  grid-column: span 4;
+  grid-row: span 6;    /* full height */
+}
+
+/* 6x4 (wide map + controls) */
+.m1g-6x4 {
+  grid-column: span 6; /* 3/4 width */
+  grid-row: span 4;
+}
+
+/* Full dashboard map */
+.m1g-map-full {
+  grid-column: span 8;
+  grid-row: span 6;
+}

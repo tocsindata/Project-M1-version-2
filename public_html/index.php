@@ -31,7 +31,8 @@ require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-display-functions
  
     if($user_in == 1) {
     // CORE BODY STARTS HERE
-    display_dashboard($this_user_id) ;
+    // display_dashboard_12cells($this_user_id) ; // example layout 12 cells 3 rows by 4 widget cells
+	display_dashboard_spans($this_user_id) ; /// multi layout examples
     // CORE BODY ENDs HERE
     } else {
     require_once $abs_us_root . $us_url_root . 'users/views/_public_index.php';

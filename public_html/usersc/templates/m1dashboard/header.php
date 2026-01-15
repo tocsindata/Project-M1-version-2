@@ -17,7 +17,8 @@ require_once($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'
 <?php
 require_once $abs_us_root . $us_url_root . "users/js/jquery.php";
 ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
 
 <?php
 if(file_exists($abs_us_root.$us_url_root.'usersc/templates/'.$settings->template.'/assets/css/style.css')){?>
@@ -43,7 +44,7 @@ $css_files[99999] = '/assets/css/style.css?v=' . date("YmdH"); // public_html/as
 $css_files[100000] = '/assets/css/nav.css?v=' . date("YmdH"); // public_html/assets/css/nav.css
 
 /* widget css related */
-$css_files[100000] = '/assets/css/widgets.css?v=' . date("YmdH"); // public_html/assets/css/widgets.css
+$css_files[100001] = '/assets/css/widgets.css?v=' . date("YmdH"); // public_html/assets/css/widgets.css
 
 
 foreach ($css_files as $css) {
@@ -63,5 +64,5 @@ echo '<meta name="m1-csrf" content="' . Token::generate() . '">' . PHP_EOL;
 
 ?>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 <?php require_once($abs_us_root.$us_url_root.'users/includes/template/header3_must_include.php'); ?>
