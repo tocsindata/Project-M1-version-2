@@ -30,6 +30,10 @@ require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-display-functions
 	}
  
     if($user_in == 1) {
+	// second level nav menu starts here id is 3
+	$menu = new Menu(3);
+	$menu->display();
+ 
     // CORE BODY STARTS HERE
     // display_dashboard_12cells($this_user_id) ; // example layout 12 cells 3 rows by 4 widget cells
 	display_dashboard_spans($this_user_id) ; /// multi layout examples

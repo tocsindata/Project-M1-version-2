@@ -27,6 +27,21 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+  Login modal-content
+  --------------------------------------------------------------------------- */
+
+  .modal-content {
+    background-color: #000 !important;
+    color: #fff !important ;
+    border-radius: 25px ;
+  }
+
+  #login-form {
+    background-color: #000  !important;
+    color: #fff !important ;
+
+  }
+/* --------------------------------------------------------------------------
    Main content wrapper (between navs and footer)
    NOTE: This must match your rendered HTML: <div class="container-flex">
    -------------------------------------------------------------------------- */
