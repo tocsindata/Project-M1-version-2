@@ -11,6 +11,8 @@
 
 declare(strict_types=1);
 
+require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-header-calls.php';
+
 if (!function_exists('m1_is_valid_key')) {
     function m1_is_valid_key(string $key): bool
     {
