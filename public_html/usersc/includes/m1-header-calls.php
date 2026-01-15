@@ -42,6 +42,20 @@ if (!function_exists('header_calls')) {
             // header_calls['js'] ...
 
             // header_calls['script'] ...
+            if(isset($header_calls['script']) && is_array($header_calls['script'])) {
+                $script_calls = $header_calls['script'] ;
+                foreach($script_calls as $script_call){
+                    if(file_exists($paths['js'] . $script_call)) {
+                        // file get contents?
+                        $src = file_get_contents($paths['js'] . $script_call);
+                        // we add the <script></script> here otherwise we cant use $header_calls['js'] for the same script
+                        echo PHP_EOL .'<!-- header call '.str_replace(".js", "", $script_call)." -->" .PHP_EOL ;
+                        echo "<script>".PHP_EOL ;
+                        echo $src ;
+                        echo PHP_EOL ."</script>".PHP_EOL ;
+                    }
+                }
+            }
     }
 }
 
