@@ -27,15 +27,21 @@ try {
     exit;
   }
 
-  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  $method = strtoupper((string)($_SERVER['REQUEST_METHOD'] ?? ''));
+
+  // Some environments/rewrites can redirect POSTs and browsers re-issue as GET.
+  // Allow GET as a fallback (still CSRF protected).
+  if ($method !== 'POST' && $method !== 'GET') {
     http_response_code(405);
     $out['message'] = 'Method not allowed.';
     echo json_encode($out);
     exit;
   }
 
+
   // CSRF check
-  if (!Token::check(Input::get('csrf'))) {
+    $csrfToken = Input::get('csrf');
+  if (!Token::check($csrfToken)) {
     http_response_code(400);
     $out['message'] = 'Security token mismatch. Please refresh and try again.';
     echo json_encode($out);

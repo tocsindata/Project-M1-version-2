@@ -237,7 +237,9 @@ if (!function_exists('m1_location_selection')) {
       form.set("location_id", String(locationId));
       form.set("csrf", csrf);
 
-      var resp = await fetch("/assets/ajax/m1-location-save.php", {
+        var resp = await fetch("/assets/ajax/m1-location-save.php", {
+        redirect: "error",
+
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
         body: form.toString(),

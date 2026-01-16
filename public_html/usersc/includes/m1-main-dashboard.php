@@ -5,7 +5,7 @@ if (!function_exists('display_main_dashboard')) {
     function display_main_dashboard(int $this_user_id = 0): void
     {
       global $abs_us_root, $us_url_root ;
-      
+
         if ($this_user_id === 0) {
             echo '<div class="row m1-row"><p>FATAL ERROR: You are not logged in.</p></div>' . PHP_EOL;
             exit;
@@ -55,6 +55,8 @@ if (!function_exists('display_main_dashboard')) {
 
         </div>
         ';
-        require_once $abs_us_root.$us_url_root.'usersc/includes/m1-location-selection.php';
+        // require_once $abs_us_root.$us_url_root.'usersc/includes/m1-location-selection.php'; // called via header call
+        m1_location_selection((int)$this_user_id);
+
     }
 }
