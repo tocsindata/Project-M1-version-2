@@ -24,11 +24,11 @@ $header_calls['script'][] = 'esri-dashboard-nav.js' ; // to include the file sou
 */
 // $header_calls['func'][] = "usersc/includes/m1-main-dashboard.php"; // relative path!
 $header_calls['func'][] = "m1-main-dashboard.php"; // function file
-$header_calls['func'][] = "m1-esri-map-header.php"; // function file
-$header_calls['script'][] = "m1-esri-map-header.js"; // script file
+// $header_calls['func'][] = "m1-esri-map-header.php"; // function file
+// $header_calls['script'][] = "m1-esri-map-header.js"; // script file
+$header_calls['css'][] = "m1-d7-style.css"; // script file
 
 
-require_once 'usersc/includes/m1-header-calls.php'; // MUST BE LOADED BEFORE PREP
 
 // debug and discovery...
 //header_calls_path_helper() ;

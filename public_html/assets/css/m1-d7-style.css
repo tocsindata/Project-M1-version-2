@@ -1,0 +1,67 @@
+#map { height: 100vh; width: 100%; }
+
+    .hud {
+      position: fixed; z-index: 9999; left: 12px; top: 12px;
+      background: rgba(15, 18, 24, 0.86);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 10px 12px;
+      backdrop-filter: blur(6px);
+      max-width: min(560px, 90vw);
+      pointer-events: none;
+      font-size: 12px;
+      opacity: 0.92;
+    }
+
+    .hud .err {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 100, 100, 0.35);
+      background: rgba(255, 80, 80, 0.10);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .legend {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      z-index: 9999;
+      background: rgba(15, 18, 24, 0.86);
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #e7eef7;
+      line-height: 1.2;
+      max-width: 360px;
+      pointer-events: none;
+    }
+
+    .legend h4 { margin: 0 0 8px; font-size: 13px; font-weight: 600; }
+    .legend .row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12px; }
+    .legend .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.18); }
+    .legend .icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      object-fit: contain;
+    }
+
+    .maplibregl-popup-content {
+      background: rgba(15, 18, 24, 0.92);
+      color: #e7eef7;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      box-shadow: none;
+    }
+    .maplibregl-popup-tip { border-top-color: rgba(15, 18, 24, 0.92) !important; }
+    .popup h3 { margin: 0 0 6px; font-size: 14px; }
+    .popup .k { opacity: 0.8; font-size: 12px; }
+    .popup .v { font-size: 12px; margin-bottom: 6px; }
+    .popup a { color: #8dc4ff; text-decoration: none; }
+    .popup a:hover { text-decoration: underline; }

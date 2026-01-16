@@ -14,10 +14,50 @@ declare(strict_types=1);
 require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-header-calls.php';
 require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-data-source-helpers.php';
 
+if(!function_exists('get_users_location_id')){
+    function get_users_location_id($this_user_id){
+        $db = m1_db() ;
+        $sql = "SELECT COUNT(*) as `is_set` FROM `users_dashboard_location` WHERE `user_id` = ".(int) $this_user_id ;
+        $db->query($sql) ;
+        $results = $db->results() ;
+        foreach($results as $row){
+            $is_set = $row->is_set ;
+        }
+
+        if($is_set == 1){
+        $sql = "SELECT `location_id` FROM `users_dashboard_location` WHERE `user_id` = ".(int) $this_user_id ;
+        $db->query($sql) ;
+        $results = $db->results() ;
+        foreach($results as $row){
+            return $row->location_id ;
+        }
+        }
+
+        $sql = "INSERT INTO `users_dashboard_location` (`user_id`, `location_id`) VALUES (".(int) $this_user_id.", 2);";
+        $db->query($sql) ;
+        return 2;
+    }
+}
+
+if(!function_exists('get_location_title')){
+    function get_location_title($location_id) {
+        $db = m1_db() ;
+        $name = "(New) Location" ;
+        $sql = "SELECT `name` FROM `m1_locations` WHERE `id` = " . (int) $location_id;
+        $db->query($sql) ;
+        $results = $db->results() ;
+        foreach($results as $row){
+            $name = $row->name ;
+        }
+        return $name ;
+    }
+}
+
+
 if(!function_exists('widget_title_settings')){
     function widget_title_settings($this_user_id, $widget_title, $btn_link){
         $db = m1_db(); // useful cheat for db class
-        $out = '<div class="widgettitle">'.$widget_title.'<span class"widgeright"><a href="'.$btn_link.'">...</a></span></div>'.PHP_EOL;
+        $out = '<div class="widgettitle"><h5>'.strtoupper($widget_title).'</h5><span><a type="button" class="btn" href="'.$btn_link.'"><i class="fas fa-ellipsis-h"></i></a></span></div>'.PHP_EOL;
         return $out ;
     }
 }

@@ -23,12 +23,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <!DOCTYPE html>
 <html lang="<?=$html_lang ?>">
 <head>
-	<!-- moved favicon to usersc/includes/head_tags.php -->
+<!-- moved favicon to usersc/includes/head_tags.php -->
 	 <?php 
 	 if(isset($header_calls)){
-	 header_calls($header_calls); 
+	echo PHP_EOL.'<!-- header calls starts -->'.PHP_EOL;
+	require_once $abs_us_root.$us_url_root.'usersc/includes/m1-header-calls.php';
+	header_calls($header_calls); 
+	echo PHP_EOL.'<!-- header calls ends -->'.PHP_EOL;
 	 }
 	 ?>
+
 	<?php
 	if(file_exists($abs_us_root.$us_url_root.'usersc/includes/head_tags.php')){
 		require_once $abs_us_root.$us_url_root.'usersc/includes/head_tags.php';
