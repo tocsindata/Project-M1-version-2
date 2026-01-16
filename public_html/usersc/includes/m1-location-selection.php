@@ -140,15 +140,31 @@ if (!function_exists('m1_location_selection')) {
   "use strict";
 
   // Unique namespaced state
-  var m1LocSel_state = {
+    var m1LocSel_state = {
     modal: null,
     modalEl: null,
     listEl: null,
     searchEl: null,
     msgEl: null,
     userIdEl: null,
-    csrfEl: null
+    csrfEl: null,
+    reloadAfterClose: false
   };
+
+  function m1LocSel_reloadParentPageClean() {
+    // Remove any #hash without changing path/query
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(
+        null,
+        document.title,
+        window.location.pathname + window.location.search
+      );
+    }
+
+    // Force full refresh of whatever page we are on
+    window.location.href = window.location.pathname + window.location.search;
+  }
+
 
   function m1LocSel_getEl(id) {
     return document.getElementById(id);
@@ -238,7 +254,6 @@ if (!function_exists('m1_location_selection')) {
       form.set("csrf", csrf);
 
         var resp = await fetch("/assets/ajax/m1-location-save.php", {
-        redirect: "error",
 
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
@@ -271,10 +286,17 @@ if (!function_exists('m1_location_selection')) {
         detail: { location_id: data.location_id }
       }));
 
-      // Close after brief confirmation
-      window.setTimeout(function () {
-        if (m1LocSel_state.modal) m1LocSel_state.modal.hide();
-      }, 600);
+      // Close modal first; reload only after Bootstrap finishes closing it
+      m1LocSel_state.reloadAfterClose = true;
+
+      if (m1LocSel_state.modal) {
+        m1LocSel_state.modal.hide();
+      } else {
+        // Fallback if modal instance is unavailable
+        m1LocSel_reloadParentPageClean();
+      }
+
+
 
     } catch (err) {
       m1LocSel_showMessage("Save failed (network error).", false);
@@ -303,6 +325,16 @@ if (!function_exists('m1_location_selection')) {
     m1LocSel_state.msgEl = m1LocSel_getEl("m1LocSelMsg");
     m1LocSel_state.userIdEl = m1LocSel_getEl("m1LocSelUserId");
     m1LocSel_state.csrfEl = m1LocSel_getEl("m1LocSelCsrf");
+
+    // Reload only after the modal is fully closed (Bootstrap transition complete)
+    if (m1LocSel_state.modalEl) {
+      m1LocSel_state.modalEl.addEventListener("hidden.bs.modal", function () {
+        if (m1LocSel_state.reloadAfterClose) {
+          m1LocSel_state.reloadAfterClose = false;
+          m1LocSel_reloadParentPageClean();
+        }
+      });
+    }
 
     if (m1LocSel_state.searchEl) {
       m1LocSel_state.searchEl.addEventListener("input", function () {

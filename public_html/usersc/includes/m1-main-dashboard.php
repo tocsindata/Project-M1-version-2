@@ -15,6 +15,10 @@ if (!function_exists('display_main_dashboard')) {
 
                 echo '
         <div class="dashboardc dashboardc-grid container-fluid">
+
+          <div class="m1g m1g-w-2 m1g-h-2"><h4 style="margin-top:0;">Normal (w2 h2)</h4><p style="margin-bottom:0;">1/4 width, 1/3 height.</p></div>
+          <div class="m1g m1g-w-2 m1g-h-2"><h4 style="margin-top:0;">Normal (w2 h2)</h4><p style="margin-bottom:0;">1/4 width, 1/3 height.</p></div>
+
         <div class="m1g m1g-4x4">
           ' ;
           $widget_title = get_location_title($location_id);
@@ -30,8 +34,6 @@ if (!function_exists('display_main_dashboard')) {
         </div>
 
           <!-- Normal widgets: 1/4 width x 1/3 height -->
-          <div class="m1g m1g-w-2 m1g-h-2"><h4 style="margin-top:0;">Normal (w2 h2)</h4><p style="margin-bottom:0;">1/4 width, 1/3 height.</p></div>
-          <div class="m1g m1g-w-2 m1g-h-2"><h4 style="margin-top:0;">Normal (w2 h2)</h4><p style="margin-bottom:0;">1/4 width, 1/3 height.</p></div>
           <div class="m1g m1g-w-2 m1g-h-2"><h4 style="margin-top:0;">Normal (w2 h2)</h4><p style="margin-bottom:0;">1/4 width, 1/3 height.</p></div>
           <div class="m1g m1g-w-2 m1g-h-2"><h4 style="margin-top:0;">Normal (w2 h2)</h4><p style="margin-bottom:0;">1/4 width, 1/3 height.</p></div>
 

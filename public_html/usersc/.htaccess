@@ -1,85 +1,15 @@
-# ============================================================
-# Project M1 Dashboard - Web Root .htaccess
-# ============================================================
+RewriteRule ^assets/ajax/ - [L]
 
 <IfModule mod_rewrite.c>
-RewriteEngine On
-
-# -----------------------------
-# A) Allow direct access to real files/dirs (do not rewrite)
-# -----------------------------
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-
-# -----------------------------
-# B) If someone hits /users/something(.php), redirect to /something
-# -----------------------------
-RewriteRule ^users/(.+?)\.php$ /$1 [R=301,L,NC,QSA,NE]
-RewriteRule ^users/(.+?)/?$ /$1 [R=301,L,NC,QSA,NE]
-
-# -----------------------------
-# C) Hide .php anywhere (strip extension in browser URL)
-# -----------------------------
-RewriteCond %{THE_REQUEST} \s/+([^.]+)\.php[\s?] [NC]
-RewriteRule ^ %1 [R=301,L,NC,NE,QSA]
-
-# -----------------------------
-# D) MAIN: route /something -> /users/something.php (hide /users/)
-# Exclusions: do NOT hijack your non-framework folders
-# -----------------------------
-RewriteCond %{REQUEST_URI} !^/(users|usersc|assets|api|ajax|\.well-known)(/|$) [NC]
-RewriteCond %{DOCUMENT_ROOT}/users/$1.php -f
-RewriteRule ^(.+?)/?$ users/$1.php [L,NC,QSA]
-
-# Optional: route /something -> /users/something/index.php if you use that pattern
-RewriteCond %{REQUEST_URI} !^/(users|usersc|assets|api|ajax|\.well-known)(/|$) [NC]
-RewriteCond %{DOCUMENT_ROOT}/users/$1/index.php -f
-RewriteRule ^(.+?)/?$ users/$1/index.php [L,NC,QSA]
-
+  RewriteEngine On
+  Rewritecond %{REQUEST_FILENAME} !/parsers
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+  RewriteRule ^ /%1 [NC,L,R]
+  RewriteCond %{REQUEST_FILENAME}\.php -f
+  RewriteRule ^(.*)$ $1.php [NC,L]
 </IfModule>
 
-# ------------------------------------------------------------
-# Add necessary headers for iframe embedding
-# NOTE: Change the allowed origin(s) as needed.
-# ------------------------------------------------------------
-<IfModule mod_headers.c>
-Header always unset X-Frame-Options
-Header always set Content-Security-Policy "frame-ancestors 'self' https://m1dashboard.com;"
-</IfModule>
-
-# ------------------------------------------------------------
-# Ensure JS MIME type
-# ------------------------------------------------------------
-<IfModule mod_mime.c>
-AddType application/javascript .js
-</IfModule>
-
-# ------------------------------------------------------------
-# UserSpice Clean URLs: POST form action blanking snippet
-# NOTE: .htaccess cannot run JavaScript.
-# Put this in usersc/includes/analytics.php (after the closing PHP tag),
-# or (better for M1) in your global footer include so it loads everywhere
-# after jQuery:
-#
-# <script type="text/javascript">
-#   $(document).ready(function() {
-#     $("form").each(function() {
-#       var method = $(this).attr('method');
-#       if(typeof method !== "undefined"){
-#         if(method.toUpperCase() === 'POST'){
-#           $(this).attr("action","");
-#         }
-#       }
-#     });
-#   });
-# </script>
-# ------------------------------------------------------------
-
-# ------------------------------------------------------------
-# php -- BEGIN cPanel-generated handler, do not edit
-# Set the “ea-php84” package as the default “PHP” programming language.
-# ------------------------------------------------------------
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php84” package as the default “PHP” programming language.
 <IfModule mime_module>
