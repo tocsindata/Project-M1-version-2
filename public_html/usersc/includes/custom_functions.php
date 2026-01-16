@@ -12,6 +12,15 @@
 declare(strict_types=1);
 
 require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-header-calls.php';
+require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-data-source-helpers.php';
+
+if(!function_exists('widget_title_settings')){
+    function widget_title_settings($this_user_id, $widget_title, $btn_link){
+        $db = m1_db(); // useful cheat for db class
+        $out = '<div class="widgettitle">'.$widget_title.'<span class"widgeright"><a href="'.$btn_link.'">...</a></span></div>'.PHP_EOL;
+        return $out ;
+    }
+}
 
 if (!function_exists('m1_is_valid_key')) {
     function m1_is_valid_key(string $key): bool

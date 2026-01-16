@@ -12,8 +12,17 @@ if (!function_exists('display_main_dashboard')) {
         echo '
 <div class="dashboardc dashboardc-grid container-fluid">
 <div class="m1g m1g-4x4">
-  <h4 style="margin-top:0;">Regional Map</h4>
-  <div class="mapView">Map goes here</div>
+  ' ;
+  $widget_title = "";
+  $btn_link = "#map_locations";
+  $display_id = 7 ; // main dashboard based on map-test7.php
+  $data_sources = get_source($this_user_id, $display_id, "geojson") ;
+  echo widget_title_settings($this_user_id, $widget_title, $btn_link);
+  
+  echo '
+  <div class="mapView"></div>';
+
+  echo '
 </div>
 
   <!-- Normal widgets: 1/4 width x 1/3 height -->
