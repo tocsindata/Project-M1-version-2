@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-header-calls.php';
 require_once $abs_us_root . $us_url_root . 'usersc/includes/m1-data-source-helpers.php';
+require_once $abs_us_root . $us_url_root . 'usersc/includes/td_functions.php';
 
 if(!function_exists('get_users_location_id')){
     function get_users_location_id($this_user_id){
